@@ -1,3 +1,9 @@
+## Leaflet geocoder with DAWA suppert
+Hi all. This fork is for Danish Address Web API. If you need the files, and cannot be bothered to build them from source, they can be picked up here:
+
+http://lab.kjlr.dk/static/leaflet-control-geocoder.zip (this URL will probably change, so please check back if you need the zip-file again).
+
+
 ## A few words on diversity in tech
 
 I need to take some of your time. I can't believe we let shit like [the Kathy Sierra incident](http://www.wired.com/2014/10/trolls-will-always-win/) or [what happened to Brianna Wu](https://twitter.com/Spacekatgal/status/520739878993420290) happen over and over again. I can't believe we, the open source community, let [sexist, misogynous shit happen over and over again](http://geekfeminism.wikia.com/wiki/Timeline_of_incidents).
