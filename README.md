@@ -1,4 +1,4 @@
-## Leaflet geocoder with DAWA suppert
+## Leaflet geocoder with DAWA support
 Hi all. This fork is for Danish Address Web API. If you need the files, and cannot be bothered to build them from source, they can be picked up here:
 
 http://lab.kjlr.dk/static/leaflet-control-geocoder.zip (this URL will probably change, so please check back if you need the zip-file again).
