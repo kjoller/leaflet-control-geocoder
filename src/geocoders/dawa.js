@@ -20,22 +20,17 @@ module.exports = {
 		            }, this.options.geocodingQueryParams),
 		            function(data) {
 			            var results = [];
-			            // j is a variable to make sure that results list will be continuous even if addresses without
-			            // a geometry is skipped.
 			            var j = 0
 			            for (var i = data.length - 1; i >= 0; i--) {
 		        	            // Check if coordinates exists, otherwiese increment j by 1 and skip adding results
-			                    if (!data[i].adgangspunkt.koordinater) {
-				                    j += 1;
-			                    } else {
-				                    results[i-j] = {
+			                    if (data[i].adgangspunkt.koordinater) {
+				                    results.push({
 				                            name: data[i].vejstykke.navn + " " + data[i].husnr + ", " + data[i].postnummer.nr + " " + data[i].postnummer.navn,
-                        
 				                            // there is no bounding box in the results, so return a small box centered around the point
 				                            bbox: L.latLngBounds([data[i].adgangspunkt.koordinater[1]-0.00001, data[i].adgangspunkt.koordinater[0]-0.00001], 
 			                                             [data[i].adgangspunkt.koordinater[1]+0.00001, data[i].adgangspunkt.koordinater[0]+0.00001]),
 				                            center: L.latLng(data[i].adgangspunkt.koordinater[1],data[i].adgangspunkt.koordinater[0])
-				                    };
+				                    });
 			                    }
 			            };
 			            cb.call(context, results);
