@@ -42,6 +42,10 @@ module.exports = {
 		            }, this, 'callback');
 		},
 
+		suggest: function(query,cb,context) {
+			return this.geocode(query, cb, context);
+		},
+
 		reverse: function(location, scale, cb, context) {
 		        Util.jsonp(this.options.serviceUrl + 'reverse/', L.extend({
 		                y: location.lat,
