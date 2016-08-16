@@ -1,6 +1,6 @@
 {
   "name": "leaflet-control-geocoder",
-  "version": "1.3.2",
+  "version": "1.5.1",
   "homepage": "https://github.com/perliedman/leaflet-control-geocoder",
   "authors": [
     "Per Liedman <per@liedman.net>"
@@ -27,7 +27,8 @@
     "photon",
     "what3words",
     "mapquest",
-    "mapzen"
+    "mapzen",
+    "here"
   ],
   "license": "BSD-2-Clause",
   "ignore": [

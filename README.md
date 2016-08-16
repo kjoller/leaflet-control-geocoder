@@ -21,6 +21,7 @@ The plugin supports many different data providers:
 * [What3Words](http://what3words.com/)
 * [Photon](http://photon.komoot.de/)
 * [Mapzen Search](https://mapzen.com/projects/search)
+* [HERE Geocoder API] (https://developer.here.com/rest-apis/documentation/geocoder/topics/overview.html)
 
 The plugin can easily be extended to support other providers.
 
@@ -28,7 +29,8 @@ See the [Leaflet Control Geocoder Demo](http://perliedman.github.com/leaflet-con
 
 # Usage
 
-[Download latest release](http://www.liedman.net/leaflet-control-geocoder/download). Load the CSS and Javascript:
+[Download latest release](https://github.com/perliedman/leaflet-control-geocoder/releases). Load the CSS and Javascript, located in
+the `dist` folder:
 
 ```HTML
 <link rel="stylesheet" href="Control.Geocoder.css" />
@@ -48,23 +50,27 @@ L.Control.geocoder().addTo(map);
 # Customizing
 
 By default, when a geocoding result is found, the control will center the map on it and place
-a marker at its location. This can be customized by overwriting the control's ```markGeocode```
-function, to perform any action desired.
+a marker at its location. This can be customized by listening to the control's `markgeocode`
+event. To remove the control's default handler for marking a result, set the option
+`defaultMarkGeocode` to `false`.
 
 For example:
 
 ```javascript
-var geocoder = L.Control.geocoder().addTo(map);
-
-geocoder.markGeocode = function(result) {
-    var bbox = result.bbox;
-    L.polygon([
-         bbox.getSouthEast(),
-         bbox.getNorthEast(),
-         bbox.getNorthWest(),
-         bbox.getSouthWest()
-    ]).addTo(map);
-};
+var geocoder = L.Control.geocoder({
+        defaultMarkGeocode: false
+    })
+    .on('markgeocode', function(e) {
+        var bbox = e.geocode.bbox;
+        var poly = L.polygon([
+             bbox.getSouthEast(),
+             bbox.getNorthEast(),
+             bbox.getNorthWest(),
+             bbox.getSouthWest()
+        ]).addTo(map);
+        map.fitBounds(poly.getBounds());
+    })
+    .addTo(map);
 ```
 
 This will add a polygon representing the result's boundingbox when a result is selected.
